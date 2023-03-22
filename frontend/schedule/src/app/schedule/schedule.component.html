@@ -1,0 +1,49 @@
+<li>
+  <h2 style="text-align: center">Расписание</h2>
+  <p style="text-align: left; color: black; margin: 0px 0.5% 0.8%">
+    Текущее время: {{ today | date : "dd-MM-YYYY" }}
+    {{ today | date : "HH:mm:ss" }}
+  </p>
+</li>
+<div class="add-margin">
+  <li>
+    <span>
+      <button class="button-17" role="button" (click)="getData()">
+        Обновить
+      </button>
+    </span>
+    <span>
+      <button class="button-17" role="button" (click)="getData()">
+        Создать занятие
+      </button>
+    </span>
+    <span>
+      <button class="button-17" role="button" (click)="getData()">
+        Удалить занятие
+      </button>
+    </span>
+    <span>
+      <button class="button-17" role="button" (click)="getData()">
+        Перенести занятие
+      </button>
+    </span>
+  </li>
+</div>
+<li>
+  <div class="schedule-block" *ngIf="show_schedule">
+    <li *ngFor="let day of schedule">
+      <div class="add-margin">
+        <button class="button-17" role="button" (click)="get_data_by_id()">
+          <span class="id">{{ day.id }} </span>
+          <span class="name">{{ day.name }} </span>
+          <span class="name"
+            >Начало занятия - {{ day.datetime_start | date : "short" }}
+          </span>
+          <span class="name"
+            >Конец занятия - {{ day.datetime_end | date : "short" : "RU" }}
+          </span>
+        </button>
+      </div>
+    </li>
+  </div>
+</li>

@@ -1,0 +1,40 @@
+version: "2.1"
+services:
+  postgres:
+    container_name: postgres_schedule
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres_schedule
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_schedule
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "8989:80"
+    networks:
+      - postgres_schedule
+    restart: unless-stopped
+
+volumes:
+  postgres:
+  pgadmin:
+  data: {}
+
+networks:
+  postgres_schedule:
+    driver: bridge
