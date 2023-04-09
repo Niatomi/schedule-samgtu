@@ -33,14 +33,13 @@
   <div class="schedule-block" *ngIf="show_schedule">
     <li *ngFor="let day of schedule">
       <div class="add-margin">
-        <button class="button-17" role="button" (click)="get_data_by_id()">
-          <span class="id">{{ day.id }} </span>
+        <button class="button-17" role="button" (click)="getData()">
           <span class="name">{{ day.name }} </span>
           <span class="name"
             >Начало занятия - {{ day.datetime_start | date : "short" }}
           </span>
           <span class="name"
-            >Конец занятия - {{ day.datetime_end | date : "short" : "RU" }}
+            >Конец занятия - {{ day.datetime_end | date : "short" : "EU" }}
           </span>
         </button>
       </div>
