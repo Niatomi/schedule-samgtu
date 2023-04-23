@@ -1,10 +1,21 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <Navbar/>
+  <div class="con">
+    <router-view/>
+  </div>
+  <Footer/>
 </template>
+
+<script>
+import Navbar from "@/components/Navbar.vue"
+import Footer from "@/components/Footer.vue"
+export default {
+  components: {
+    Navbar,
+    Footer
+  }
+}
+</script>
 
 <style>
 #app {
@@ -91,5 +102,10 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.con {
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 </style>
